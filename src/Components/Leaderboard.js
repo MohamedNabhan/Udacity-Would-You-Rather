@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 const Leaderboard = ({leaders}) => {
+    const leadersSort = leaders.sort((a,b) => b.totalScore - a.totalScore)
     return (
         <div className='LeaderBoard'>
             <h1 className="mark-poll">Leader Board</h1>
             <ul className="card-list">
-                {   leaders.map((leader) => (
+                {leadersSort.map((leader) => (
                         <li key={leader.id} className='card'>
                             <div className="user-img">
                                 <img src={`/${leader.avatarURL}`}  alt={leader.name}/>

@@ -53,7 +53,6 @@ export function handleAddAnswer (info) {
       return saveQuestionAnswer(info)
         .catch((e) => {
           console.warn('Error in handleAddAnswer: ', e)
-          dispatch(addAnswer(info)) 
           alert('The was an error saving the answer. Try again.')
       })
     }

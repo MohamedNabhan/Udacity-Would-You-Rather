@@ -1,5 +1,5 @@
 import React, { Component, Fragment} from 'react';
-import { BrowserRouter  as Router, Route } from 'react-router-dom'
+import { BrowserRouter  as Router, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import Navigation from './Navigation'
@@ -21,12 +21,14 @@ class App extends Component {
 			<Fragment>
         		<div className='container'>
 					<Navigation />
+					<Switch>
 					<Route path="/" exact component={Login}/>
 					<Private path='/home' exact component={Home} />
 					<Private path='/add' exact component={AddQuestion} />
 					<Private path='/question/:id' component={QuestionPage} />
 					<Private path='/leaderboard' component={Leaderboard} />
-					<Route path="/Error404" component={Error404} />
+					<Route path="/*" component={Error404} />
+					</Switch>
 				</div>
 			</Fragment>
 			</Router>

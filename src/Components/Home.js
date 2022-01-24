@@ -23,13 +23,14 @@ class Home extends Component {
             );
             return showAnswered ? answered : !answered
         });
+        const QuestionsSort = filteredQuestions.sort((a,b) => b.timestamp - a.timestamp)
         return (
             <div className="Home">
                 <h1 className="mark-poll">Questions</h1>
-                <button className={ !showAnswered && 'active'} onClick={(e) => this.filterQuestions(true)}>Unanswered Questions</button>
-                <button className={ showAnswered && 'active'} onClick={(e) => this.filterQuestions(false)}>Answered Questions</button>
+                <button className={ !showAnswered ? 'active' : ''} onClick={(e) => this.filterQuestions(true)}>Unanswered Questions</button>
+                <button className={ showAnswered ? 'active' : ''} onClick={(e) => this.filterQuestions(false)}>Answered Questions</button>
                 <ul className="card-list">
-                    {filteredQuestions.map((question) => (
+                    {QuestionsSort.map((question) => (
                         <li key={question.id}>
                             <Link to={`question/${question['id']}`}>
                                 <Question id={question.id}/>

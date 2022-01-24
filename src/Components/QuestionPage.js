@@ -29,7 +29,7 @@ class QuestionPage extends Component {
         const { selectedAnswer } = this.state;
 
         if (!question) {
-            return <Redirect to="/not-found"/>
+            return <Redirect to="/Error404"/>
         }
 
         return (
